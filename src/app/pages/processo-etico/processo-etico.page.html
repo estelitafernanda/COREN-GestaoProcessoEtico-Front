@@ -1,0 +1,17 @@
+<div class="container">
+    <h2>Lista de Processos</h2>
+
+    <button (click)="irParaCadastro()" class="button-go">Cadastrar Novo Processo</button>
+
+    <div class="row">
+      <div class="col-12" *ngFor="let processoEticos of processosPorPagina">
+        <app-processo-etico-card [processoEtico]="processoEticos"></app-processo-etico-card>
+      </div>
+    </div>
+
+    <div class="pagination-controls">
+      <button (click)="paginaAnterior()" [disabled]="paginaAtual === 1" class="button-previous">Anterior</button>
+      <span>Página {{paginaAtual}} de {{totalDePaginas}}</span>
+      <button (click)="proximaPagina()" [disabled]="paginaAtual === totalDePaginas" class="button-next">Próxima</button>
+    </div>
+</div>

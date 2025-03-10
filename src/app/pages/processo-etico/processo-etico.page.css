@@ -1,0 +1,49 @@
+.container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .button-next{
+    margin-bottom: 20px;
+
+  }
+  .button-previous{
+    margin-bottom: 20px;
+  }
+  .button-go{
+
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px; 
+  }
+  
+  .col-12 {
+    width: 100%; 
+    padding: 0 15px;
+    margin-bottom: 1px; 
+  }
+  .pagination-controls {
+    display: flex;
+    position: fixed;
+    
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-controls button {
+    margin: 0 10px;
+    padding: 5px 15px;
+  }
+  
+  .pagination-controls span {
+    font-size: 1rem;
+    margin: 0 10px;
+  }
