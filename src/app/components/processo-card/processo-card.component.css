@@ -1,0 +1,41 @@
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;               
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    align-items: center;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.label {
+    font-size: 1 rem;
+    font-weight: bold;
+    color: #555;
+
+}
+
+.value {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.d-flex {
+    display: flex;
+    gap: 10px;
+    margin-left: auto; 
+}

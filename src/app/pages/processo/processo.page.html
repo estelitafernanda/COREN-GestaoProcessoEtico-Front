@@ -1,0 +1,17 @@
+<div class="container">
+    <h2>Lista de Processos</h2>
+
+    <button (click)="irParaCadastro()" class="btn btn-primary mb-3">Cadastrar Novo Processo</button>
+
+    <div class="row">
+      <div class="col-12" *ngFor="let processo of processosPorPagina">
+        <app-processo-card [processo]="processo"></app-processo-card>
+      </div>
+    </div>
+
+    <div class="pagination-controls">
+      <button (click)="paginaAnterior()" [disabled]="paginaAtual === 1">Anterior</button>
+      <span>Página {{paginaAtual}} de {{totalDePaginas}}</span>
+      <button (click)="proximaPagina()" [disabled]="paginaAtual === totalDePaginas">Próxima</button>
+    </div>
+</div>

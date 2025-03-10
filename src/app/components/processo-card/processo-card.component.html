@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-body">
+      <div class="info-item">
+          <p class="label">N° do Processo</p>
+          <p class="value">{{ processo.numberProcess }}</p>
+      </div>
+      <div class="info-item">
+          <p class="label">N° da Denúncia</p>
+          <p class="value">{{ processo.numberDenuncia }}</p>
+      </div>
+      <div class="info-item">
+          <p class="label">Data da Denúncia</p>
+          <p class="value">{{ processo.dateDenuncia | date:'dd/MM/yyyy' }}</p>
+      </div>
+      <div class="info-item">
+          <p class="label">É Ético?</p>
+          <p class="value">{{ processo.isEthicalProcess ? 'Sim' : 'Não' }}</p>
+      </div>
+      <div class="info-item">
+          <p class="label">Pertence ao Cofen?</p>
+          <p class="value">{{ processo.belongsCofen ? 'Sim' : 'Não' }}</p>
+      </div>
+      <div class="d-flex">
+          <a href="#" class="btn btn-primary">Editar</a>
+          <a href="#" class="btn btn-danger">Excluir</a>
+      </div>
+  </div>
+</div>
