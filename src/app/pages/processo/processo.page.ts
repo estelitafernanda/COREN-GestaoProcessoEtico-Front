@@ -23,16 +23,27 @@ export class ProcessoPage implements OnInit {
   ngOnInit(): void {
     this.processoService.getProcessos().subscribe(
       (data: any) => {
-        console.log(data); 
-        this.processos = data;
+        console.log("Resposta da API antes da limpeza:", data);
+  
+        this.processos = Array.isArray(data) ? data : [];
+  
+        this.processos = this.processos.map(processo => ({
+          ...processo,
+          processoEtico: processo.processoEtico ? { ...processo.processoEtico, processo: undefined } : null
+        }));
+  
+        console.log("Resposta da API após a limpeza:", this.processos);
+  
         this.totalDePaginas = Math.ceil(this.processos.length / this.processosPorPaginaCount);
-        this.atualizarProcessosPorPagina(); // Atualiza os processos para a primeira página
+        this.atualizarProcessosPorPagina();
       },
       (error: any) => {
         console.error("Erro ao carregar processos", error);
       }
     );
   }
+  
+  
 
   irParaCadastro(): void {
     this.router.navigate(['/cadastro-processo']);

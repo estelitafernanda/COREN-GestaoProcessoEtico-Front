@@ -14,13 +14,27 @@ export class ProcessoService {
 
   getProcessos(): Observable<any> {
     return new Observable(observer => {
-      axios.get(`${this.apiUrl}/lista`)
+      axios.get(`${this.apiUrl}`)
         .then(response => {
           observer.next(response.data);
           observer.complete();
         })
         .catch(error => {
           console.error("Erro ao buscar os processos", error);
+          observer.error(error);
+        });
+    });
+  }
+
+  buscarProcessoId(id: number): Observable<any> {
+    return new Observable(observer => {
+      axios.get(`${this.apiUrl}/${id}`)
+        .then(response => {
+          observer.next(response.data);
+          observer.complete();
+        })
+        .catch(error => {
+          console.error("Erro ao buscar o processo pelo ID", error);
           observer.error(error);
         });
     });

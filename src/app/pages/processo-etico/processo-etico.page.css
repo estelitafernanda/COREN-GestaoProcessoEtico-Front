@@ -1,23 +1,27 @@
 .container {
+  margin-top: 100px;
     padding: 20px;
     max-width: 1000px;
     margin: auto;
   }
   
   h2 {
+    color: black;
     text-align: center;
-    margin-bottom: 30px;
+    margin-top: 90px;
+    margin-bottom: 10px;
   }
   
   .button-next{
     margin-bottom: 20px;
-
+    border-radius: 30px;
   }
   .button-previous{
     margin-bottom: 20px;
+    border-radius: 30px;
   }
   .button-go{
-
+    
   }
   .row {
     display: flex;
@@ -30,12 +34,17 @@
     padding: 0 15px;
     margin-bottom: 1px; 
   }
+
   .pagination-controls {
-    display: flex;
     position: fixed;
-    
-    text-align: center;
-    margin-top: 20px;
+    bottom: 120px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    background-color: white; 
+    padding: 10px 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; 
   }
   
   .pagination-controls button {
@@ -44,6 +53,7 @@
   }
   
   .pagination-controls span {
+    font-family: 'geistvf';
     font-size: 1rem;
     margin: 0 10px;
   }

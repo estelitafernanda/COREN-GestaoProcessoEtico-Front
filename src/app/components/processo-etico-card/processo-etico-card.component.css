@@ -1,8 +1,9 @@
 .card {
-    border: 1px solid #ddd;
+    border: 1px solid lightblue;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
+    margin-top: 30px;
     margin-bottom: 20px;
     display: block;
 }
@@ -13,6 +14,7 @@
     flex-direction: row; 
     flex-wrap: wrap; 
     gap: 20px; 
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -20,9 +22,11 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    margin-left: auto;
 }
 
 .label {
+    font-family: 'geistvf';
     font-size: 1 rem;
     font-weight: bold;
     color: #555;
@@ -30,6 +34,7 @@
 }
 
 .value {
+    font-family: 'geistvf';
     font-size: 1rem;
     font-weight: normal;
 }
@@ -38,4 +43,19 @@
     display: flex;
     gap: 10px;
     margin-left: auto; 
+}
+.btn-delete{
+    font-family: 'geistvf';
+    text-decoration: none;
+    color: black;
+}
+.btn-edit{
+    color: black;
+    font-family: 'geistvf';
+    text-decoration: none;
+}
+.container-btn{
+    background-color: lightblue;
+    padding: 10px;
+    border-radius: 15px;
 }

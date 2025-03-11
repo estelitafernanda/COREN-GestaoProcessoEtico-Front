@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'bebas';
+    src: url('/fonts/BebasNeue-Regular.woff') format('woff');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'lemon';
+    src: url('/fonts/LEMONMILK-BOLD.woff') format('woff');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'cool';
+    src: url('/fonts/Coolvetica-Regular.woff') format('woff');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'geist';
+    src: url('/fonts/GeistMonoVF.woff') format('woff');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'geistvf';
+    src: url('/fonts/GeistVF.woff') format('woff');
+    font-weight: normal;
+}

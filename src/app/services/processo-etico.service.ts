@@ -13,7 +13,7 @@ export class ProcessoEticoService{
 
     getProcessosEticos(): Observable<any> {
         return new Observable(observer => {
-          axios.get(`${this.apiUrl}/lista`)
+          axios.get(`${this.apiUrl}`)
             .then(response => {
               observer.next(response.data);
               observer.complete();

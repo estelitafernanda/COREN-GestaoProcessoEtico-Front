@@ -25,7 +25,7 @@ export class ProcessoEticoPage {
       this.processoService.getProcessosEticos().subscribe(
         (data: any) => {
           console.log(data); 
-          this.processosEticos = data;
+          this.processosEticos = Array.isArray(data) ? data : [];
           this.totalDePaginas = Math.ceil(this.processosEticos.length / this.processosPorPaginaCount);
           this.atualizarProcessosPorPagina(); 
         },

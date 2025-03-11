@@ -1,6 +1,6 @@
 <div class="container">
     <h2>Cadastro de Processo</h2>
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()"  #processoForm="ngForm">
         
         <div class="mb-3">
             <label for="numberProcess" class="form-label">Número do Processo:</label>
@@ -28,7 +28,7 @@
         </div>
 
         <div class="button-container">
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!processoForm.form.valid">Cadastrar</button>
         </div>
         
     </form>

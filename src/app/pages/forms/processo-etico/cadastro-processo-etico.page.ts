@@ -3,11 +3,13 @@ import { FormsModule } from "@angular/forms";
 import { ProcessoEticoService } from "../../../services/processo-etico.service";
 import { Router } from "@angular/router";
 import { ProcessoService } from "../../../services/processo.service";
+import { CommonModule } from "@angular/common";
+import { Processo } from "../../../models/processo";
 
 @Component({
   selector: 'app-cadastro-processo-etico',
   templateUrl: './cadastro-processo-etico.page.html',
-  imports:[FormsModule],
+  imports:[FormsModule, CommonModule],
   styleUrls: ['./cadastro-processo-etico.page.css']
 })
 export class CadastroProcessoEticoPage {
@@ -17,10 +19,10 @@ export class CadastroProcessoEticoPage {
     date: '',
     inspiraEm: '',
     processo: {
-      processoId: null
+      processId: null
     }
   };
-  processos = [];
+  processos: Processo[] = [];
 
   constructor(
     private processoEticoService: ProcessoEticoService,
@@ -44,7 +46,8 @@ export class CadastroProcessoEticoPage {
   }
   ngOnInit() {
     this.processoService.getProcessos().subscribe(
-      (data) => {
+      (data: Processo[]) => { 
+        console.log("Processos carregados:", data); 
         this.processos = data; 
       },
       (error) => {

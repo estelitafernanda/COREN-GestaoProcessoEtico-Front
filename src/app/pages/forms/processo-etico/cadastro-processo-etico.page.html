@@ -1,17 +1,18 @@
 <div class="container">
     <h2>Cadastro de Processo Ético</h2>
     <form (ngSubmit)="onSubmit()" #processoForm="ngForm">
-        <div class="mb-3">
-        <label for="processId" class="form-label">Processo (ID):</label>
-            <select class="form-control" id="processId" name="processId" [(ngModel)]="processoEtico.processo.processoId" required>
-              <option *ngFor="let processo of processos" [value]="processo.processoId">
-                {{ processo.processoId }} - {{ processo.someOtherField }}
-              </option>
-            </select>
-        </div>
+      <div class="mb-3">
+        <label for="processId" class="form-label">Processo:</label>
+        <select class="form-control" id="processId" name="processId" [(ngModel)]="processoEtico.processo.processId" required>
+          <option *ngFor="let processo of processos" [value]="processo.processId">
+            {{ processo.processId }} - {{ processo.numberProcess }}
+          </option>
+        </select>
+      </div>
+      
       
       <div class="mb-3">
-        <label for="numberEthicalProcess" class="form-label">Número do Processo:</label>
+        <label for="numberEthicalProcess" class="form-label">N° Processo Ético:</label>
         <input type="number" class="form-control" id="numberEthicalProcess" name="numberEthicalProcess" [(ngModel)]="processoEtico.numberEthicalProcess" required>
       </div>
   
@@ -24,13 +25,7 @@
         <label for="date" class="form-label">Data:</label>
         <input type="date" class="form-control" id="date" name="date" [(ngModel)]="processoEtico.date" required>
       </div>
-  
-      <div class="mb-3">
-        <label for="inspiraEm" class="form-label">Inspira Em:</label>
-        <input type="date" class="form-control" id="inspiraEm" name="inspiraEm" [(ngModel)]="processoEtico.inspiraEm" required>
-      </div>
 
-  
       <div class="button-container">
         <button type="submit" class="btn btn-primary" [disabled]="!processoForm.form.valid">Cadastrar</button>
       </div>

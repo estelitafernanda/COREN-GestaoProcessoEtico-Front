@@ -26,11 +26,12 @@
     margin-left: 10px; 
 }
 
-/* Menu lateral */
 .nav {
     display: none; 
     flex-direction: column;
     position: absolute;
+    font-family: 'cool', sans-serif;
+    letter-spacing: 1px;
     top: 100px;
     height: 784px;
     left: 0;
@@ -64,3 +65,4 @@
 body.menu-aberto {
     overflow: hidden;
 }
+

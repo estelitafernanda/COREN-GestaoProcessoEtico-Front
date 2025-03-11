@@ -1,6 +1,7 @@
 export interface ProcessoEtico{
+    ethicalProcessId: number; 
     responsible: string;
-    validity: boolean;
+    inspiraEm?: string;
     date: string; 
-    number_ethical_process: string;
+    numberEthicalProcess: number;
 }
