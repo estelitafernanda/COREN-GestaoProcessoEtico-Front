@@ -54,5 +54,19 @@ export class ProcessoService {
         });
     });
   }
+  deletarProcesso(id: number): Observable<any>{
+    return new Observable(observer => {
+      axios.delete(`${this.apiUrl}/${id}`)
+        .then(response => {
+          console.log("Processo deletado com sucesso", response.data);
+          observer.next(response.data);
+          observer.complete();
+        })
+        .catch(error => {
+          console.error("Erro ao deletar o processo", error);
+          observer.error(error);
+        });
+    });
+  }
   
 }

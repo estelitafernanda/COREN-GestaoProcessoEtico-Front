@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Processo } from '../../models/processo';
 import { CommonModule } from '@angular/common';
-
+import { ProcessoService } from '../../services/processo.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-processo-card',
@@ -10,5 +11,34 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./processo-card.component.css']
 })
 export class ProcessoCardComponent {
-  @Input() processo!: Processo;  
+  @Input() processo!: Processo; 
+  @Output() processoDeletado = new EventEmitter<number>(); 
+
+  constructor(private processoService: ProcessoService) {}
+
+  deletarProcesso() {
+    Swal.fire({
+      title: 'Tem certeza?',
+      text: `Você deseja deletar o processo ${this.processo.numberProcess}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim, deletar!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.processoService.deletarProcesso(this.processo.processId).subscribe(
+          () => {
+            Swal.fire('Deletado!', 'O processo foi removido com sucesso.', 'success');
+            this.processoDeletado.emit(this.processo.processId);
+          },
+          error => {
+            console.error('Erro ao deletar o processo', error);
+            Swal.fire('Erro!', 'Não foi possível deletar o processo.', 'error');
+          }
+        );
+      }
+    });
+  }
 }

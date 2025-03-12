@@ -6,7 +6,7 @@ import { Processo } from '../../models/processo';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-process-list',
+  selector: 'app-processo-list',
   templateUrl: './processo.page.html',
   imports: [CommonModule, ProcessoCardComponent],
   styleUrls: ['./processo.page.css']
@@ -42,7 +42,9 @@ export class ProcessoPage implements OnInit {
       }
     );
   }
-  
+  removerProcessoDaLista(id: number) {
+    this.processos = this.processos.filter(processo => processo.processId !== id);
+  }
   
 
   irParaCadastro(): void {

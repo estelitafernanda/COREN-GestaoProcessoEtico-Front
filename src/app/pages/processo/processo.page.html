@@ -1,11 +1,13 @@
 <div class="container">
     <h2>Lista de Processos</h2>
-
-    <button (click)="irParaCadastro()" class="button-go">Cadastrar Novo Processo</button>
+    
+    <div class="container-btn">
+      <button (click)="irParaCadastro()" class="button-go">Cadastrar Novo Processo</button>
+    </div>
 
     <div class="row">
       <div class="col-12" *ngFor="let processo of processosPorPagina">
-        <app-processo-card [processo]="processo"></app-processo-card>
+        <app-processo-card [processo]="processo" (processoDeletado)="removerProcessoDaLista($event)"></app-processo-card>
       </div>
     </div>
 

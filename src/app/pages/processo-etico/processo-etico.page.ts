@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProcessoEticoService } from '../../services/processo-etico.service';
 import { ProcessoEtico } from '../../models/processo-etico';
@@ -6,13 +6,13 @@ import { ProcessoEticoCardComponent } from '../../components/processo-etico-card
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-processo-etico',
+  selector: 'app-processo-etico-list',
   standalone: true,
   imports:[CommonModule, ProcessoEticoCardComponent],
   templateUrl: './processo-etico.page.html',
   styleUrl: './processo-etico.page.css'
 })
-export class ProcessoEticoPage {
+export class ProcessoEticoPage implements OnInit{
   processosEticos: ProcessoEtico[] = [];
   processosPorPagina: ProcessoEtico[] = [];
   paginaAtual: number = 1;
