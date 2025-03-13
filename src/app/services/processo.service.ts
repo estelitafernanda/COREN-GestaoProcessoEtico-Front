@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class ProcessoService {
 
   private apiUrl = 'http://localhost:8080/api/processo'; 
@@ -26,7 +25,7 @@ export class ProcessoService {
     });
   }
 
-  buscarProcessoId(id: number): Observable<any> {
+  getProcessoById(id: number): Observable<any> {
     return new Observable(observer => {
       axios.get(`${this.apiUrl}/${id}`)
         .then(response => {
@@ -54,7 +53,23 @@ export class ProcessoService {
         });
     });
   }
-  deletarProcesso(id: number): Observable<any>{
+
+  atualizarProcesso(processo: any): Observable<any> {
+    return new Observable(observer => {
+      axios.put(`${this.apiUrl}/${processo.processId}`, processo)
+        .then(response => {
+          console.log("Processo atualizado com sucesso", response.data);
+          observer.next(response.data);
+          observer.complete();
+        })
+        .catch(error => {
+          console.error("Erro ao atualizar o processo", error);
+          observer.error(error);
+        });
+    });
+  }
+
+  deletarProcesso(id: number): Observable<any> {
     return new Observable(observer => {
       axios.delete(`${this.apiUrl}/${id}`)
         .then(response => {
@@ -68,5 +83,4 @@ export class ProcessoService {
         });
     });
   }
-  
 }

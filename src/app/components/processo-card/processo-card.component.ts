@@ -3,18 +3,20 @@ import { Processo } from '../../models/processo';
 import { CommonModule } from '@angular/common';
 import { ProcessoService } from '../../services/processo.service';
 import Swal from 'sweetalert2';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-processo-card',
   templateUrl: './processo-card.component.html',
-  imports:[CommonModule],
+  imports:[CommonModule, RouterModule],
   styleUrls: ['./processo-card.component.css']
 })
 export class ProcessoCardComponent {
   @Input() processo!: Processo; 
   @Output() processoDeletado = new EventEmitter<number>(); 
 
-  constructor(private processoService: ProcessoService) {}
+  constructor(private processoService: ProcessoService, ) {}
+
 
   deletarProcesso() {
     Swal.fire({

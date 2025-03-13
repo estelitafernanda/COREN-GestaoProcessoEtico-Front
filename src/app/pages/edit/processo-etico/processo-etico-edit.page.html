@@ -1,0 +1,34 @@
+<div class="container">
+    <h2>Editar Processo Ético</h2>
+    <form (ngSubmit)="onSubmit()" #processoForm="ngForm">
+      <div class="mb-3">
+        <label for="processId" class="form-label">Processo:</label>
+        <select class="form-control" id="processId" name="processId" [(ngModel)]="processoEtico.processo.processId" required>
+          <option *ngFor="let processo of processos" [value]="processo.processId">
+            {{ processoEtico.ethicalProcessId }} - {{ processoEtico.numberProcess }}
+          </option>
+        </select>
+      </div>
+      
+      <div class="mb-3">
+        <label for="numberEthicalProcess" class="form-label">N° Processo Ético:</label>
+        <input type="number" class="form-control" id="numberEthicalProcess" name="numberEthicalProcess" [(ngModel)]="processoEtico.numberEthicalProcess" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="responsible" class="form-label">Responsável:</label>
+        <input type="text" class="form-control" id="responsible" name="responsible" [(ngModel)]="processoEtico.responsible" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="date" class="form-label">Data:</label>
+        <input type="date" class="form-control" id="date" name="date" [(ngModel)]="processoEtico.date" required>
+      </div>
+  
+      <div class="button-container">
+        <button type="submit" class="btn btn-primary" [disabled]="!processoForm.form.valid">Salvar Alterações</button>
+        <button type="button" class="btn btn-secondary" (click)="voltarParaLista()">Cancelar</button>
+      </div>
+  
+    </form>
+  </div>

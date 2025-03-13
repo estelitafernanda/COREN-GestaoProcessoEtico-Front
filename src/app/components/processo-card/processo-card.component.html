@@ -22,7 +22,9 @@
       </div>
       <div class="d-flex">
         <div class="container-btn">
-            <a href="#" class="btn-edit"><i class="bi bi-pencil-square"></i></a>
+            <a [routerLink]="['/processo/edit', processo.processId]" class="btn-edit">
+                <i class="bi bi-pencil-square"></i>
+            </a>            
         </div>
         <div class="container-btn">
             <a class="btn-delete" (click)="deletarProcesso()">

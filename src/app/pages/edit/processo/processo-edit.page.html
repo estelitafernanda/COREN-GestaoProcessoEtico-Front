@@ -1,1 +1,40 @@
-<html></html>
+<div class="container">
+    <h2>Editar Processo</h2>
+    <form (ngSubmit)="onSubmit(processoForm)" #processoForm="ngForm">
+
+        <input type="hidden" name="processId" [(ngModel)]="processo.processId">
+
+        
+        <div class="mb-3">
+            <label for="numberProcess" class="form-label">Número do Processo:</label>
+            <input type="text" class="form-control" id="numberProcess" name="numberProcess" [(ngModel)]="processo.numberProcess" required>
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="isEthicalProcess" name="isEthicalProcess" [(ngModel)]="processo.isEthicalProcess">
+            <label class="form-check-label" for="isEthicalProcess">É um Processo Ético?</label>
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="belongsCofen" name="belongsCofen" [(ngModel)]="processo.belongsCofen">
+            <label class="form-check-label" for="belongsCofen">Pertence ao Cofen?</label>
+        </div>
+
+        <div class="mb-3">
+            <label for="numberDenuncia" class="form-label">Número da Denúncia:</label>
+            <input type="text" class="form-control" id="numberDenuncia" name="numberDenuncia" [(ngModel)]="processo.numberDenuncia" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="dateDenuncia" class="form-label">Data da Denúncia:</label>
+            <input type="date" class="form-control" id="dateDenuncia" name="dateDenuncia" [(ngModel)]="processo.dateDenuncia" required>
+        </div>
+
+        <div class="button-container">
+            <button type="submit" class="btn btn-primary" [disabled]="!processoForm.form.valid">Salvar Alterações</button>
+            <button type="button" class="btn btn-secondary" (click)="voltarParaLista()">Cancelar</button>
+
+        </div>
+        
+    </form>
+</div>
