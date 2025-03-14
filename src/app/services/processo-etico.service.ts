@@ -24,6 +24,19 @@ export class ProcessoEticoService{
             });
         });
     }
+    getProcessoById(id: number): Observable<any> {
+      return new Observable(observer => {
+        axios.get(`${this.apiUrl}/${id}`)
+          .then(response => {
+            observer.next(response.data);
+            observer.complete();
+          })
+          .catch(error => {
+            console.error("Erro ao buscar o processo pelo ID", error);
+            observer.error(error);
+          });
+      });
+    }
     cadastrarProcessoEtico(processoEtico: any): Observable<any> {
         return new Observable(observer => {
           axios.post(this.apiUrl, processoEtico)

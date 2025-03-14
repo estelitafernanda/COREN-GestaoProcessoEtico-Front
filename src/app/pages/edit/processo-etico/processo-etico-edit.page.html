@@ -1,11 +1,12 @@
 <div class="container">
     <h2>Editar Processo Ético</h2>
-    <form (ngSubmit)="onSubmit()" #processoForm="ngForm">
+    <form (ngSubmit)="onSubmit(processoForm)" #processoForm="ngForm">
+
       <div class="mb-3">
         <label for="processId" class="form-label">Processo:</label>
         <select class="form-control" id="processId" name="processId" [(ngModel)]="processoEtico.processo.processId" required>
           <option *ngFor="let processo of processos" [value]="processo.processId">
-            {{ processoEtico.ethicalProcessId }} - {{ processoEtico.numberProcess }}
+            {{ processo.processId }} - {{ processo.numberProcess }}
           </option>
         </select>
       </div>

@@ -1,9 +1,6 @@
 <div class="container">
-    <h2>Lista de Processos</h2>
-    
-    <div class="container-btn">
-      <button (click)="irParaCadastro()" class="button-go">Cadastrar Novo Processo</button>
-    </div>
+      <button (click)="irParaCadastro()" class="button-go">
+        <i class="bi bi-plus-circle"></i>Cadastrar Processo</button>
 
     <div class="row">
       <div class="col-12" *ngFor="let processo of processosPorPagina">

@@ -1,1 +1,21 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+    <div class="dashboard-card card-processos">
+      <h2>Total de Processos</h2>
+      <p>{{ totalProcessos }}</p>
+    </div>
+  
+    <div class="dashboard-card card-eticos">
+      <h2>Total de Processos Éticos</h2>
+      <p>{{ totalProcessosEticos }}</p>
+    </div>
+  
+    <div class="dashboard-card card-prazos">
+      <h2>Processos Próximos de Expirar</h2>
+      <ul>
+        <li *ngFor="let processo of processosExpirando">
+          {{ processo.numberEthicalProcess }} - Inspira em: {{ processo.inspiraEm }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  
