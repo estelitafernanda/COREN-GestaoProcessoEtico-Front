@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>Cadastrar Nova Fase</h2>
+  
+    <form (ngSubmit)="cadastrarFase()">
+      <div class="form-group">
+        <label for="nameFase">Nome da Fase:</label>
+        <input type="text" id="nameFase" [(ngModel)]="nameFase" name="nameFase" class="form-control" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="prazoFase">Prazo:</label>
+        <input type="date" id="prazoFase" [(ngModel)]="prazoFase" name="prazoFase" class="form-control" required>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
+      <button type="button" class="btn btn-secondary" (click)="voltar()">Voltar</button>
+    </form>
+  </div>
+  

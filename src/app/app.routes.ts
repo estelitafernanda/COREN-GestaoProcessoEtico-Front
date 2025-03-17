@@ -7,6 +7,7 @@ import { CadastroProcessoEticoPage } from './pages/forms/processo-etico/cadastro
 import { FasesProcessoPage } from './pages/fases-processo/fases-processo.page';
 import { ProcessoEditPage } from './pages/edit/processo/processo-edit.page';
 import { ProcessoEticoEditPage } from './pages/edit/processo-etico/processo-etico-edit.page';
+import { CadastroFasesProcessoPage } from './pages/forms/fases-processo/cadastro-fases-processo.page';
 
 export const routes: Routes = [
     {path: '', component: HomePage},
@@ -14,7 +15,8 @@ export const routes: Routes = [
     {path: 'cadastro-processo', component: CadastroProcessoPage},
     {path: 'processo-etico', component: ProcessoEticoPage},
     {path: 'cadastro-processo-etico', component: CadastroProcessoEticoPage},
-    {path: 'fases-processo', component: FasesProcessoPage},
+    {path: 'processo-etico/:id/fases', component: FasesProcessoPage},
+    {path: 'cadastro-fases/:id', component: CadastroFasesProcessoPage},
     {path: 'processo/edit/:id', component: ProcessoEditPage},
     {path: 'processo-etico/edit/:id', component: ProcessoEticoEditPage},
 ];

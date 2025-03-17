@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import axios from "axios";
 import { Observable } from "rxjs";
+import { FasesProcesso } from "../models/fases-processo";
 
 @Injectable({
   providedIn: 'root'
@@ -75,6 +76,19 @@ export class ProcessoEticoService{
           })
           .catch(error => {
             console.error("Erro ao atualizar o processo ético", error);
+            observer.error(error);
+          });
+      });
+    }
+    getFasesDoProcesso(ethicalProcessId: number): Observable<FasesProcesso[]> {
+      return new Observable(observer => {
+        axios.get(`${this.apiUrl}/${ethicalProcessId}/fases`)
+          .then(response => {
+            observer.next(response.data);
+            observer.complete();
+          })
+          .catch(error => {
+            console.error("Erro ao buscar as fases do processo", error);
             observer.error(error);
           });
       });

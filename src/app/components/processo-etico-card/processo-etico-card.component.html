@@ -1,33 +1,33 @@
-<div class="card">
-    <div class="card-body">
+<div class="card" (click)="navegarParaFases()">
+    <div class="card-body" (click)="navegarParaFases()">
         <div class="info-item">
             <p class="label">N° Processo Ético</p>
             <p class="value">{{ processoEtico.numberEthicalProcess }}</p>
         </div>
         <div class="info-item">
-            <p class="label">Resposável</p>
-            <p class="value">{{ processoEtico.responsible}}</p>
+            <p class="label">Responsável</p>
+            <p class="value">{{ processoEtico.responsible }}</p>
         </div>
         <div class="info-item">
             <p class="label">Data</p>
-            <p class="value">{{ processoEtico.date}}</p>
+            <p class="value">{{ processoEtico.date }}</p>
         </div>
-        <div class="info-item">
+        <div class="info-item" *ngIf="processoEtico.temFases">
             <p class="label">Inspira em</p>
-            <p class="value">{{ processoEtico.inspiraEm}}</p>
+            <p class="value">{{ processoEtico.inspiraEm }}</p>
         </div>
         <div class="d-flex">
             <div class="container-btn">
-                <a [routerLink]="['/processo-etico/edit', processoEtico.ethicalProcessId]" class="btn-edit">
+                <a [routerLink]="['/processo-etico/edit', processoEtico.ethicalProcessId]" class="btn-edit"
+                   (click)="$event.stopPropagation()">
                     <i class="bi bi-pencil-square"></i>
-                </a>            
+                </a>
             </div>
             <div class="container-btn">
-                <a class="btn-delete" (click)="deletarProcesso()">
+                <a class="btn-delete" (click)="deletarProcesso($event)">
                     <i class="bi bi-trash-fill"></i>
                 </a>
             </div>
         </div>
     </div>
-  </div>
-  
+</div>

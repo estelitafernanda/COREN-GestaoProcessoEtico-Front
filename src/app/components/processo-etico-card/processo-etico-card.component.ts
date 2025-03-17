@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { ProcessoEtico } from "../../models/processo-etico";
 import Swal from "sweetalert2";
 import { ProcessoEticoService } from "../../services/processo-etico.service";
-import { RouterModule } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 
 @Component({
   selector: 'app-processo-etico-card',
@@ -15,9 +15,17 @@ export class ProcessoEticoCardComponent {
   @Input() processoEtico!: ProcessoEtico; 
   @Output() processoDeletado = new EventEmitter<number>(); 
   
-  constructor(private ethicalProcessoService: ProcessoEticoService){}
+  constructor(private ethicalProcessoService: ProcessoEticoService, private router: Router){}
 
-  deletarProcesso() {
+  navegarParaFases() {
+    this.router.navigate(['/processo-etico', this.processoEtico.ethicalProcessId, 'fases']);
+  }
+
+  get temFases(): boolean {
+    return this.processoEtico.fasesProcesso && this.processoEtico.fasesProcesso.length > 0;
+  }
+  deletarProcesso(event: Event) {
+      event.stopPropagation(); 
       Swal.fire({
         title: 'Tem certeza?',
         text: `Você deseja deletar o processo ${this.processoEtico.numberEthicalProcess}?`,

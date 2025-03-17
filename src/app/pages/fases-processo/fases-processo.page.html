@@ -1,16 +1,16 @@
 <div class="container">
-    <button (click)="irParaCadastro()" class="button-go">
-      <i class="bi bi-plus-circle"></i>Cadastrar Processo</button>
+  <h2>Fases do Processo</h2>
+  <button class="btn btn-secondary" (click)="voltar()">Voltar</button>
+  <button class="btn-cadastro" (click)="irParaCadastro()">Cadastrar Fase</button>
 
-  <div class="row">
-    <div class="col-12" *ngFor="let processo of processosPorPagina">
-      <app-processo-card [processo]="processo" (processoDeletado)="removerProcessoDaLista($event)"></app-processo-card>
-    </div>
+  <div *ngIf="fases.length > 0; else semFases">
+      <div class="fase-card" *ngFor="let fase of fases">
+          <h3>{{ fase.nameFase }}</h3>
+          <p><strong>Prazo:</strong> {{ fase.prazoFase | date: 'dd/MM/yyyy' }}</p>
+      </div>
   </div>
 
-  <div class="pagination-controls">
-    <button (click)="paginaAnterior()" [disabled]="paginaAtual === 1" class="button-previous"><i class="bi bi-arrow-left"></i></button>
-    <span>Página {{paginaAtual}} de {{totalDePaginas}}</span>
-    <button (click)="proximaPagina()" class="button-next" [disabled]="paginaAtual === totalDePaginas"><i class="bi bi-arrow-right"></i></button>
-  </div>
+  <ng-template #semFases>
+      <p>Este processo ainda não possui fases.</p>
+  </ng-template>
 </div>

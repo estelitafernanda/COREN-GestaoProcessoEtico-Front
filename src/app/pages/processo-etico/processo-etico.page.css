@@ -7,10 +7,12 @@
   .button-next{
     margin-bottom: 20px;
     border-radius: 30px;
+    cursor: pointer;
   }
   .button-previous{
     margin-bottom: 20px;
     border-radius: 30px;
+    cursor: pointer;
   }
   .button-go {
     background-color: #007cc1;
