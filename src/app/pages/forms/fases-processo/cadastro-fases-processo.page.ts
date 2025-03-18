@@ -36,7 +36,8 @@ export class CadastroFasesProcessoPage implements OnInit {
     const novaFase = {
       nameFase: this.nameFase,
       prazoFase: this.prazoFase,
-      ethicalProcessId: this.ethicalProcessId 
+      processoEtico: { ethicalProcessId: this.ethicalProcessId }
+
     };
   
     this.fasesProcessoService.cadastrarFase(novaFase).subscribe(

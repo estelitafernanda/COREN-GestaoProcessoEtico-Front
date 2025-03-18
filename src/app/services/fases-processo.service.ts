@@ -26,7 +26,7 @@ export class FasesProcessoService {
     });
   }
 
-  cadastrarFase(fase: FasesProcesso): Observable<FasesProcesso> {
+  cadastrarFase(fase: any ): Observable<any> {
     return new Observable(observer => {
       axios.post(this.apiUrl, fase)
         .then(response => {
@@ -53,7 +53,7 @@ export class FasesProcessoService {
         });
     });
   }
-  atualizarFase(fase: FasesProcesso): Observable<FasesProcesso> {
+  atualizarFase(fase: any): Observable<any> {
     return new Observable(observer => {
       axios.put(`${this.apiUrl}/${fase.fasesId}`, fase)
         .then(response => {

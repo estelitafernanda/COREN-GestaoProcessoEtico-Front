@@ -34,5 +34,7 @@ export class CadastroProcessoPage {
       }
     );
   }
-  
+  voltar(): void{
+    this.router.navigate(['/processo']);
+  }
 }

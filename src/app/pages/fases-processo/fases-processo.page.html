@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Fases do Processo</h2>
-  <button class="btn btn-secondary" (click)="voltar()">Voltar</button>
+  <button class="btn-back btn-secondary" (click)="voltar()"><i class="bi bi-arrow-left"></i></button>
   <button class="btn-cadastro" (click)="irParaCadastro()">Cadastrar Fase</button>
 
   <div *ngIf="fases.length > 0; else semFases">
