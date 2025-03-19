@@ -3,14 +3,24 @@
   <button class="btn-back btn-secondary" (click)="voltar()"><i class="bi bi-arrow-left"></i></button>
   <button class="btn-cadastro" (click)="irParaCadastro()">Cadastrar Fase</button>
 
-  <div *ngIf="fases.length > 0; else semFases">
-      <div class="fase-card" *ngFor="let fase of fases">
-          <h3>{{ fase.nameFase }}</h3>
-          <p><strong>Prazo:</strong> {{ fase.prazoFase | date: 'dd/MM/yyyy' }}</p>
-      </div>
+  <div *ngIf="fasesPorPagina.length > 0; else semFases">
+    <div *ngFor="let fase of fasesPorPagina">
+        <app-fases-processo-card [fase]="fase"></app-fases-processo-card>
+    </div>
+      
   </div>
 
   <ng-template #semFases>
       <p>Este processo ainda não possui fases.</p>
   </ng-template>
+
+  <div class="pagination-controls" *ngIf="totalDePaginas > 1">
+    <button (click)="paginaAnterior()" [disabled]="paginaAtual === 1" class="button-previous">
+      <i class="bi bi-arrow-left"></i>
+    </button>
+    <span>Página {{paginaAtual}} de {{totalDePaginas}}</span>
+    <button (click)="proximaPagina()" [disabled]="paginaAtual === totalDePaginas" class="button-next">
+      <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
 </div>

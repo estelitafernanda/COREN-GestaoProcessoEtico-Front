@@ -1,5 +1,5 @@
 export interface FasesProcesso{
-    fasesId?: number;
+    fasesId: number;
     nameFase: string;
     prazoFase: string;
     ethicalProcessId: number;

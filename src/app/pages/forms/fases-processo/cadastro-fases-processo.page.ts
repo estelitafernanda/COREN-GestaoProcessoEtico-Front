@@ -25,7 +25,9 @@ export class CadastroFasesProcessoPage implements OnInit {
 
   ngOnInit(): void {
     this.ethicalProcessId = Number(this.route.snapshot.paramMap.get('id'));
+    console.log("ID do processo ético:", this.ethicalProcessId);
   }
+
 
   cadastrarFase(): void {
     if (!this.nameFase || !this.prazoFase) {
@@ -36,9 +38,10 @@ export class CadastroFasesProcessoPage implements OnInit {
     const novaFase = {
       nameFase: this.nameFase,
       prazoFase: this.prazoFase,
-      processoEtico: { ethicalProcessId: this.ethicalProcessId }
+      processoEtico: this.ethicalProcessId 
 
     };
+    console.log("Enviando para API:", JSON.stringify(novaFase, null, 2));
   
     this.fasesProcessoService.cadastrarFase(novaFase).subscribe(
       () => {
