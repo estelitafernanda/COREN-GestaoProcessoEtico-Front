@@ -1,21 +1,22 @@
 <div class="card">
     <div class="card-body">
         <div class="info-item">
-            <p class="label">{{ fase.nameFase }}</p>
+            <p class="label">Nome</p>
+            <p class="value">{{ fase.nameFase }}</p>
         </div>
         <div class="info-item">
-            <p class="label">Prazo:</p> 
+            <p class="label">Prazo</p> 
             <p class="value">{{ fase.prazoFase }} dias</p>
         </div>
         <div class="d-flex">
             <div class="container-btn">
-                <a [routerLink]="['/processo-etico//edit', processoEtico.ethicalProcessId]" class="btn-edit"
+                <a [routerLink]="['/fases-processo/edit', fase.fasesId]" class="btn-edit"
                    (click)="$event.stopPropagation()">
                     <i class="bi bi-pencil-square"></i>
                 </a>
             </div>
             <div class="container-btn">
-                <a class="btn-delete" (click)="deletarProcesso($event)">
+                <a class="btn-delete" (click)="deletarProcesso()">
                     <i class="bi bi-trash-fill"></i>
                 </a>
             </div>

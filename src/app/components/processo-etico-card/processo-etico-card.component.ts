@@ -39,8 +39,11 @@ export class ProcessoEticoCardComponent {
         if (result.isConfirmed) {
           this.ethicalProcessoService.deletarProcessoEtico(this.processoEtico.ethicalProcessId).subscribe(
             () => {
-              Swal.fire('Deletado!', 'O processo foi removido com sucesso.', 'success');
-              this.processoDeletado.emit(this.processoEtico.ethicalProcessId);
+              Swal.fire('Deletado!', 'O processo foi removido com sucesso.', 'success').then(() => {
+                this.router.navigateByUrl('/processo').then(() => {
+                  window.location.reload();
+                });
+              });
             },
             error => {
               console.error('Erro ao deletar o processo', error);

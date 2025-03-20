@@ -14,7 +14,7 @@
     flex-direction: row; 
     flex-wrap: wrap; 
     gap: 20px; 
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
 }
 .info-item {
@@ -35,4 +35,29 @@
     font-family: 'geistvf', sans-serif;
     font-size: 1rem;
     font-weight: normal;
+}
+.d-flex {
+    display: flex;
+    gap: 10px;
+    margin-left: auto; 
+}
+.btn-delete{
+    font-family: 'geistvf';
+    text-decoration: none;
+    color: black;
+}
+.btn-edit{
+    color: black;
+    font-family: 'geistvf';
+    text-decoration: none;
+}
+.container-btn{
+    background-color: lightblue;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.container-btn:hover{
+    transform: scale(1.05);
 }

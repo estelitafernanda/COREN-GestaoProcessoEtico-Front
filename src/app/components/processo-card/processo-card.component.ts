@@ -15,7 +15,7 @@ export class ProcessoCardComponent {
   @Input() processo!: Processo; 
   @Output() processoDeletado = new EventEmitter<number>(); 
 
-  constructor(private processoService: ProcessoService, ) {}
+  constructor(private processoService: ProcessoService, private router: Router ) {}
 
 
   deletarProcesso() {
@@ -32,7 +32,11 @@ export class ProcessoCardComponent {
       if (result.isConfirmed) {
         this.processoService.deletarProcesso(this.processo.processId).subscribe(
           () => {
-            Swal.fire('Deletado!', 'O processo foi removido com sucesso.', 'success');
+            Swal.fire('Deletado!', 'O processo foi removido com sucesso.', 'success').then(() => {
+              this.router.navigateByUrl('/processo-etico').then(() => {
+                window.location.reload();
+              });
+            });
             this.processoDeletado.emit(this.processo.processId);
           },
           error => {

@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 import { FasesProcessoService } from "../../../services/fases-processo.service";
-import { FasesProcesso } from "../../../models/fases-processo";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-cadastro-fases',
@@ -31,25 +31,42 @@ export class CadastroFasesProcessoPage implements OnInit {
 
   cadastrarFase(): void {
     if (!this.nameFase || !this.prazoFase) {
-      alert("Preencha todos os campos!");
+      Swal.fire({
+        title: "Atenção!",
+        text: "Preencha todos os campos!",
+        icon: "warning",
+        confirmButtonText: "OK"
+      });
       return;
     }
-    
+  
     const novaFase = {
       nameFase: this.nameFase,
       prazoFase: this.prazoFase,
-      processoEtico: this.ethicalProcessId 
-
+      processoEtico: this.ethicalProcessId
     };
+  
     console.log("Enviando para API:", JSON.stringify(novaFase, null, 2));
   
     this.fasesProcessoService.cadastrarFase(novaFase).subscribe(
       () => {
-        alert("Fase cadastrada com sucesso!");
-        this.router.navigate([`/processo-etico/${this.ethicalProcessId}/fases`]);
+        Swal.fire({
+          title: "Sucesso!",
+          text: "Fase cadastrada com sucesso!",
+          icon: "success",
+          confirmButtonText: "OK"
+        }).then(() => {
+          this.router.navigate([`/processo-etico/${this.ethicalProcessId}/fases`]);
+        });
       },
       (error) => {
         console.error("Erro ao cadastrar fase", error);
+        Swal.fire({
+          title: "Erro!",
+          text: "Não foi possível cadastrar a fase. Tente novamente.",
+          icon: "error",
+          confirmButtonText: "OK"
+        });
       }
     );
   }

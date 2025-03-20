@@ -53,10 +53,15 @@
     color: black;
     font-family: 'geistvf';
     text-decoration: none;
+    width: 40px;
 }
 .container-btn{
     background-color: lightblue;
     cursor: pointer;
     padding: 10px;
     border-radius: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.container-btn:hover{
+    transform: scale(1.05);
 }

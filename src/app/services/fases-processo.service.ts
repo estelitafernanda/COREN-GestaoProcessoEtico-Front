@@ -25,6 +25,19 @@ export class FasesProcessoService {
         });
     });
   }
+  getFaseById(faseId: number): Observable<FasesProcesso> {
+    return new Observable(observer => {
+      axios.get(`${this.apiUrl}/${faseId}`)
+        .then(response => {
+          observer.next(response.data);
+          observer.complete();
+        })
+        .catch(error => {
+          console.error("Erro ao buscar fase por ID", error);
+          observer.error(error);
+        });
+    });
+  }
 
   cadastrarFase(fase: any ): Observable<any> {
     return new Observable(observer => {

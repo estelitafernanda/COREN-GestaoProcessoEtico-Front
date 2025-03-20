@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FasesProcesso } from '../../models/fases-processo';
 import { FasesProcessoService } from '../../services/fases-processo.service';
 import Swal from 'sweetalert2';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-fases-processo-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './fases-processo-card.component.html',
   styleUrls: ['./fases-processo-card.component.css']
 })
@@ -21,7 +22,7 @@ export class FasesProcessoCardComponent {
     deletarProcesso() {
       Swal.fire({
         title: 'Tem certeza?',
-        text: `Você deseja deletar o processo ${this.fase.nameFase}?`,
+        text: `Você deseja deletar a fase ${this.fase.nameFase}?`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 import { ProcessoService } from "../../../services/processo.service";
 import { CommonModule } from "@angular/common";
 import { Processo } from "../../../models/processo";
-
+import Swal from "sweetalert2";
 @Component({
   selector: 'app-cadastro-processo-etico',
   templateUrl: './cadastro-processo-etico.page.html',
@@ -31,16 +31,27 @@ export class CadastroProcessoEticoPage {
   ) {}
 
   onSubmit() {
-    console.log('Processo a ser enviado: ', this.processoEtico);  
+    console.log("Processo a ser enviado: ", this.processoEtico);
     this.processoEticoService.cadastrarProcessoEtico(this.processoEtico).subscribe(
       (data) => {
-        console.log('Resposta do servidor: ', data);  
-        alert('Processo cadastrado com sucesso!');
-        this.router.navigate(['/processo-etico']);  
+        console.log("Resposta do servidor: ", data);
+        Swal.fire({
+          title: "Sucesso!",
+          text: "Processo ético cadastrado com sucesso!",
+          icon: "success",
+          confirmButtonText: "OK"
+        }).then(() => {
+          this.router.navigate(["/processo-etico"]);
+        });
       },
       (error) => {
-        console.error('Erro ao cadastrar processo', error);
-        alert('Erro ao cadastrar o processo. Tente novamente.');
+        console.error("Erro ao cadastrar processo", error);
+        Swal.fire({
+          title: "Erro!",
+          text: "Erro ao cadastrar o processo. Tente novamente.",
+          icon: "error",
+          confirmButtonText: "OK"
+        });
       }
     );
   }
