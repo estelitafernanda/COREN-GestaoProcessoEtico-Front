@@ -4,13 +4,21 @@
     margin: auto;
   }
   
-  .btn-back{
+  .container-btn {
     margin-top: 100px;
+    display: flex;
+    gap: 10px; 
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .btn-cadastro {
+    width: 180px; 
+    height: 50px; 
     background-color: #007cc1;
     color: white;
     font-size: 16px;
     font-weight: bold;
-    padding: 12px 25px;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -19,28 +27,29 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
+    padding: 12px 25px; 
   }
-  .btn-back:hover {
+.btn-back{
+  width: 100px; 
+    height: 50px; 
+    background-color: #007cc1;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 25px;
+}
+  
+  .btn-back:hover,
+  .btn-cadastro:hover {
     background-color: #005f91;
     transform: scale(1.05);
   }
   
-  .btn-cadastro{
-    background-color: #007cc1;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .btn-cadastro:hover {
-    background-color: #005f91;
-    transform: scale(1.05);
-}

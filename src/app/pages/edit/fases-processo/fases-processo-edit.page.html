@@ -1,0 +1,32 @@
+<div class="container">
+  
+    <form (ngSubmit)="onSubmit(faseForm)" #faseForm="ngForm">
+      <div class="mb-3">
+        <label for="nameFase" class="form-label">Nome da Fase:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nameFase"
+          name="nameFase"
+          [(ngModel)]="faseProcesso.nameFase"
+          required
+        />
+      </div>
+  
+      <div class="mb-3">
+        <label for="prazoFase" class="form-label">Prazo (em dias):</label>
+        <input
+          type="text"
+          class="form-control"
+          id="prazoFase"
+          name="prazoFase"
+          [(ngModel)]="faseProcesso.prazoFase"
+          required
+        />
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Salvar</button>
+      <button type="button" class="btn btn-secondary" (click)="voltarParaLista()">Cancelar</button>
+    </form>
+  </div>
+  

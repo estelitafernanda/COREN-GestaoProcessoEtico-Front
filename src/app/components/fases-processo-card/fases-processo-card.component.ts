@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FasesProcesso } from '../../models/fases-processo';
 import { FasesProcessoService } from '../../services/fases-processo.service';
 import Swal from 'sweetalert2';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-fases-processo-card',
@@ -16,7 +16,10 @@ export class FasesProcessoCardComponent {
   @Input() fase!: FasesProcesso;
    @Output() processoDeletado = new EventEmitter<number>(); 
   
-    constructor(private fasesProcessoService: FasesProcessoService ) {}
+    constructor(
+      private fasesProcessoService: FasesProcessoService,
+      private router: Router
+    ) {}
   
   
     deletarProcesso() {
@@ -33,7 +36,11 @@ export class FasesProcessoCardComponent {
         if (result.isConfirmed) {
           this.fasesProcessoService.deletarFase(this.fase.fasesId).subscribe(
             () => {
-              Swal.fire('Deletado!', 'O processo foi removido com sucesso.', 'success');
+              Swal.fire('Deletado!', 'O processo foi removido com sucesso.', 'success').then(() => {
+                this.router.navigateByUrl(`/processo-etico/${this.fase.ethicalProcessId}/fases`).then(() => {
+                  window.location.reload();
+                });
+              });
               this.processoDeletado.emit(this.fase.fasesId);
             },
             error => {

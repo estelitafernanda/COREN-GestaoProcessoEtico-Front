@@ -12,9 +12,9 @@
     <div class="dashboard-card card-prazos">
       <h2>Processos Próximos de Expirar</h2>
       <ul>
-        <li *ngFor="let processo of processosExpirando">
+        <p *ngFor="let processo of processosExpirando">
           {{ processo.numberEthicalProcess }} - Inspira em: {{ processo.inspiraEm }}
-        </li>
+        </p>
       </ul>
     </div>
   </div>

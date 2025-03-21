@@ -20,10 +20,14 @@ form {
     gap: 15px; 
 }
 
-h2 {
-    text-align: center;
+.container-btn {
+    width: 30%;
+    margin-top: 50px;
+    display: flex;
+    gap: 10px; 
+    justify-content: flex-end; 
+    align-items: center;
     margin-bottom: 20px;
-    color: #333;
 }
 .btn-back{
     background-color: #007cc1;

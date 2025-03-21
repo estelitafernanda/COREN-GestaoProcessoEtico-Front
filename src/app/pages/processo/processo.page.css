@@ -14,14 +14,21 @@
     border-radius: 30px;
     cursor: pointer;
   }
-
-  .button-go {
+  
+  .container-btn {
     margin-top: 100px;
+    display: flex;
+    gap: 10px; 
+    justify-content: flex-end; 
+    align-items: center;
+  }
+  .btn-cadastro {
+    width: 250px; 
+    height: 50px; 
     background-color: #007cc1;
     color: white;
     font-size: 16px;
     font-weight: bold;
-    padding: 12px 25px;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -30,18 +37,19 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-}
-
-  .button-go:hover {
-      background-color: #005f91;
-      transform: scale(1.05);
+    padding: 12px 25px; 
+  }
+  
+  .btn-cadastro:hover {
+    background-color: #005f91;
+    transform: scale(1.05);
   }
 
-  .button-go:active {
+  .btn-cadastro:active {
       transform: scale(0.95);
   }
 
-  .button-go i {
+  .btn-cadastro i {
       font-size: 18px;
   }
 

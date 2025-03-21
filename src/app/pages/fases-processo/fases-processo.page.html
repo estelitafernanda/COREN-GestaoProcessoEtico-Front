@@ -1,7 +1,9 @@
 <div class="container">
-  <h2>Fases do Processo</h2>
-  <button class="btn-back btn-secondary" (click)="voltar()"><i class="bi bi-arrow-left"></i></button>
-  <button class="btn-cadastro" (click)="irParaCadastro()">Cadastrar Fase</button>
+  <div class="container-btn">
+      <button class="btn-back" (click)="voltar()"><i class="bi bi-arrow-left"></i></button>
+    <button class="btn-cadastro" (click)="irParaCadastro()">Cadastrar Fase</button>
+  </div>
+  
 
   <div *ngIf="fasesPorPagina.length > 0; else semFases">
     <div *ngFor="let fase of fasesPorPagina">
