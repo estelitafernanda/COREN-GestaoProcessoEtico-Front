@@ -53,7 +53,14 @@ export class FasesProcessoEditPage implements OnInit {
     }
   
     this.fasesProcessoService.atualizarFase(this.faseProcesso).subscribe(
-      () => {
+      (response) => {
+        console.log("Resposta da atualização:", response);
+        
+        // Se o processo ético estiver na resposta, pega o ID
+        if (response.processoEtico && response.processoEtico.ethicalProcessId) {
+          this.ethicalProcessId = response.processoEtico.ethicalProcessId;
+        }
+  
         Swal.fire("Sucesso!", "Fase atualizada com sucesso.", "success").then(() => {
           this.router.navigate([`/processo-etico/${this.ethicalProcessId}/fases`]); 
         });
@@ -64,6 +71,7 @@ export class FasesProcessoEditPage implements OnInit {
       }
     );
   }
+  
   
 
   voltarParaLista(): void {

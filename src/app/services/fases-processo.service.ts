@@ -70,7 +70,8 @@ export class FasesProcessoService {
     return new Observable(observer => {
       axios.put(`${this.apiUrl}/${fase.fasesId}`, fase)
         .then(response => {
-          observer.next(response.data);
+          console.log("Dados retornados pelo backend:", response.data);
+          observer.next(response.data);  // Passa os dados completos
           observer.complete();
         })
         .catch(error => {
@@ -79,5 +80,6 @@ export class FasesProcessoService {
         });
     });
   }
+  
   
 }
