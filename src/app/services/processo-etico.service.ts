@@ -68,18 +68,26 @@ export class ProcessoEticoService{
     }
     atualizarProcessoEtico(processoEtico: any): Observable<any> {
       return new Observable(observer => {
-        axios.put(`${this.apiUrl}/${processoEtico.ethicalProcessId}`, processoEtico)
-          .then(response => {
-            console.log("Processo Ético atualizado com sucesso", response.data);
-            observer.next(response.data);
-            observer.complete();
-          })
-          .catch(error => {
-            console.error("Erro ao atualizar o processo ético", error);
-            observer.error(error);
-          });
+        axios.put(`${this.apiUrl}/${processoEtico.ethicalProcessId}`, 
+          JSON.stringify(processoEtico),  
+          {
+            headers: {
+              'Content-Type': 'application/json'  
+            }
+          }
+        )
+        .then(response => {
+          console.log("Processo Ético atualizado com sucesso", response.data);
+          observer.next(response.data);
+          observer.complete();
+        })
+        .catch(error => {
+          console.error("Erro ao atualizar o processo ético", error);
+          observer.error(error);
+        });
       });
     }
+    
     getFasesDoProcesso(ethicalProcessId: number): Observable<FasesProcesso[]> {
       return new Observable(observer => {
         axios.get(`${this.apiUrl}/${ethicalProcessId}/fases`)

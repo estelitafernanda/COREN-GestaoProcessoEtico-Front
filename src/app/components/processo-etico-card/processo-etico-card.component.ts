@@ -40,7 +40,7 @@ export class ProcessoEticoCardComponent {
           this.ethicalProcessoService.deletarProcessoEtico(this.processoEtico.ethicalProcessId).subscribe(
             () => {
               Swal.fire('Deletado!', 'O processo foi removido com sucesso.', 'success').then(() => {
-                this.router.navigateByUrl('/processo').then(() => {
+                this.router.navigateByUrl('/processo-etico').then(() => {
                   window.location.reload();
                 });
               });

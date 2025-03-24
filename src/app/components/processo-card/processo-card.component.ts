@@ -33,7 +33,7 @@ export class ProcessoCardComponent {
         this.processoService.deletarProcesso(this.processo.processId).subscribe(
           () => {
             Swal.fire('Deletado!', 'O processo foi removido com sucesso.', 'success').then(() => {
-              this.router.navigateByUrl('/processo-etico').then(() => {
+              this.router.navigateByUrl('/processo').then(() => {
                 window.location.reload();
               });
             });

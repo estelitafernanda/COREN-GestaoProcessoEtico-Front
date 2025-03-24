@@ -1,10 +1,14 @@
 <div class="container">
   <div class="container-btn">
+    <div class="search-container">
+      <i class="bi bi-search"></i>
+      <input type="text" [(ngModel)]="termoBusca" (input)="filtrarProcessos()" placeholder="Buscar processo..." class="search-input">
+    </div>
     <button (click)="irParaCadastro()" class="btn-cadastro">
-      <i class="bi bi-plus-circle"></i>Cadastrar Processo</button>
+      <i class="bi bi-plus-circle"></i>Cadastrar Processo
+    </button>
   </div>
-    
-
+  
     <div class="row">
       <div class="col-12" *ngFor="let processo of processosPorPagina">
         <app-processo-card [processo]="processo" (processoDeletado)="removerProcessoDaLista($event)"></app-processo-card>

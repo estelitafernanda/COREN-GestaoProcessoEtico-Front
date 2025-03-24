@@ -1,19 +1,28 @@
 <div class="container">
   <div class="container-btn">
-    <button (click)="irParaCadastro()" class="button-go"> 
-      <i class="bi bi-plus-circle"></i>Cadastrar Processo Ético</button>
+    <div class="search-container">
+      <i class="bi bi-search"></i>
+      <input type="text" [(ngModel)]="termoBusca" (input)="filtrarProcessos()" placeholder="Buscar processo..." class="search-input">
+    </div>
+
+    <button (click)="irParaCadastro()" class="button-go">
+      <i class="bi bi-plus-circle"></i>Cadastrar Processo Ético
+    </button>
   </div>
-      
 
-    <div class="row">
-      <div class="col-12" *ngFor="let processoEticos of processosPorPagina">
-        <app-processo-etico-card [processoEtico]="processoEticos"></app-processo-etico-card>
-      </div>
+  <div class="row">
+    <div class="col-12" *ngFor="let processoEtico of processosPorPagina">
+      <app-processo-etico-card [processoEtico]="processoEtico"></app-processo-etico-card>
     </div>
+  </div>
 
-    <div class="pagination-controls">
-      <button (click)="paginaAnterior()" [disabled]="paginaAtual === 1" class="button-previous"><i class="bi bi-arrow-left"></i></button>
-      <span>Página {{paginaAtual}} de {{totalDePaginas}}</span>
-      <button (click)="proximaPagina()" class="button-next" [disabled]="paginaAtual === totalDePaginas"><i class="bi bi-arrow-right"></i></button>
-    </div>
+  <div class="pagination-controls">
+    <button (click)="paginaAnterior()" [disabled]="paginaAtual === 1" class="button-previous">
+      <i class="bi bi-arrow-left"></i>
+    </button>
+    <span>Página {{paginaAtual}} de {{totalDePaginas}}</span>
+    <button (click)="proximaPagina()" class="button-next" [disabled]="paginaAtual === totalDePaginas">
+      <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
 </div>

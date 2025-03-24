@@ -31,14 +31,12 @@ export class FasesProcessoEditPage implements OnInit {
         console.log("Resposta do backend:", data);
         this.faseProcesso = data;
 
-        // Verifica se `processoEtico` existe antes de acessar `ethicalProcessId`
-        if (this.faseProcesso.processoEtico) {
-          this.ethicalProcessId = this.faseProcesso.processoEtico.ethicalProcessId;
-          console.log("ID do Processo Ético:", this.ethicalProcessId);
+        if (this.faseProcesso.ethicalProcessoId) {
+          this.ethicalProcessId = this.faseProcesso.ethicalProcessoId;
         } else {
           console.warn("A fase não está associada a um processo ético!");
-          this.ethicalProcessId = 0; // Definir como 0 ou outro valor padrão
-        }
+          this.ethicalProcessId = 0; 
+        }        
       },
       (error) => {
         console.error("Erro ao carregar a fase:", error);
@@ -56,9 +54,8 @@ export class FasesProcessoEditPage implements OnInit {
       (response) => {
         console.log("Resposta da atualização:", response);
         
-        // Se o processo ético estiver na resposta, pega o ID
-        if (response.processoEtico && response.processoEtico.ethicalProcessId) {
-          this.ethicalProcessId = response.processoEtico.ethicalProcessId;
+        if (response.ethicalProcessoId) {
+          this.ethicalProcessId = response.ethicalProcessoId;
         }
   
         Swal.fire("Sucesso!", "Fase atualizada com sucesso.", "success").then(() => {

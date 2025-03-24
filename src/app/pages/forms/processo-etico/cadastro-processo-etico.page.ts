@@ -6,10 +6,11 @@ import { ProcessoService } from "../../../services/processo.service";
 import { CommonModule } from "@angular/common";
 import { Processo } from "../../../models/processo";
 import Swal from "sweetalert2";
+
 @Component({
   selector: 'app-cadastro-processo-etico',
   templateUrl: './cadastro-processo-etico.page.html',
-  imports:[FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule],
   styleUrls: ['./cadastro-processo-etico.page.css']
 })
 export class CadastroProcessoEticoPage {
@@ -26,40 +27,50 @@ export class CadastroProcessoEticoPage {
 
   constructor(
     private processoEticoService: ProcessoEticoService,
-     private router: Router,
-     private processoService: ProcessoService,
+    private router: Router,
+    private processoService: ProcessoService,
   ) {}
 
   onSubmit() {
     console.log("Processo a ser enviado: ", this.processoEtico);
-    this.processoEticoService.cadastrarProcessoEtico(this.processoEtico).subscribe(
-      (data) => {
-        console.log("Resposta do servidor: ", data);
-        Swal.fire({
-          title: "Sucesso!",
-          text: "Processo ético cadastrado com sucesso!",
-          icon: "success",
-          confirmButtonText: "OK"
-        }).then(() => {
-          this.router.navigate(["/processo-etico"]);
-        });
-      },
-      (error) => {
-        console.error("Erro ao cadastrar processo", error);
-        Swal.fire({
-          title: "Erro!",
-          text: "Erro ao cadastrar o processo. Tente novamente.",
-          icon: "error",
-          confirmButtonText: "OK"
-        });
+
+    this.processoEticoService.getProcessosEticos().subscribe((processosEticos: any[]) => {
+      const existe = processosEticos.some((pe: any) => pe.processo?.processId === this.processoEtico.processo.processId);
+    
+      if (existe) {
+        Swal.fire("Erro", "Já existe um processo ético para esse processo!", "error");
+      } else {
+        this.processoEticoService.cadastrarProcessoEtico(this.processoEtico).subscribe(
+          (data) => {
+            console.log("Resposta do servidor: ", data);
+            Swal.fire({
+              title: "Sucesso!",
+              text: "Processo ético cadastrado com sucesso!",
+              icon: "success",
+              confirmButtonText: "OK"
+            }).then(() => {
+              this.router.navigate(["/processo-etico"]);
+            });
+          },
+          (error) => {
+            console.error("Erro ao cadastrar processo", error);
+            Swal.fire({
+              title: "Erro!",
+              text: "Erro ao cadastrar o processo. Tente novamente.",
+              icon: "error",
+              confirmButtonText: "OK"
+            });
+          }
+        );
       }
-    );
-  }
+    });    
+  }    
+
   ngOnInit() {
     this.processoService.getProcessos().subscribe(
-      (data: Processo[]) => { 
-        console.log("Processos carregados:", data); 
-        this.processos = data; 
+      (data: Processo[]) => {
+        console.log("Processos carregados:", data);
+        this.processos = data;
       },
       (error) => {
         console.error('Erro ao buscar processos', error);

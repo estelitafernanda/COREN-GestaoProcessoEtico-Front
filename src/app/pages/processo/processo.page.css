@@ -1,5 +1,5 @@
 .container {
-    padding: 20px;
+    padding: 10px;
     max-width: 1000px;
     margin: auto;
   }
@@ -18,9 +18,9 @@
   .container-btn {
     margin-top: 100px;
     display: flex;
-    gap: 10px; 
-    justify-content: flex-end; 
+    justify-content: space-between; 
     align-items: center;
+    flex-wrap: wrap; 
   }
   .btn-cadastro {
     width: 250px; 
@@ -87,3 +87,41 @@
     font-size: 1rem;
     margin: 0 10px;
   }
+
+.search-container {
+  display: flex;
+  flex: 1; 
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 500px;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.search-container i {
+  position: absolute;
+  right: 35px; 
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+  font-size: 18px;
+  pointer-events: none; 
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 15px;
+  padding-left: 35px; 
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
