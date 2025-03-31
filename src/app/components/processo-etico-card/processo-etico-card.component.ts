@@ -25,8 +25,8 @@ export class ProcessoEticoCardComponent {
     return this.processoEtico.fasesProcesso && this.processoEtico.fasesProcesso.length > 0;
   }
   deletarProcesso(event: Event) {
-      event.stopPropagation(); 
-      Swal.fire({
+    event.stopPropagation(); 
+    Swal.fire({
         title: 'Tem certeza?',
         text: `Você deseja deletar o processo ${this.processoEtico.numberEthicalProcess}?`,
         icon: 'warning',
@@ -35,22 +35,21 @@ export class ProcessoEticoCardComponent {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Sim, deletar!',
         cancelButtonText: 'Cancelar'
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
-          this.ethicalProcessoService.deletarProcessoEtico(this.processoEtico.ethicalProcessId).subscribe(
-            () => {
-              Swal.fire('Deletado!', 'O processo foi removido com sucesso.', 'success').then(() => {
-                this.router.navigateByUrl('/processo-etico').then(() => {
-                  window.location.reload();
-                });
-              });
-            },
-            error => {
-              console.error('Erro ao deletar o processo', error);
-              Swal.fire('Erro!', 'Não foi possível deletar o processo.', 'error');
-            }
-          );
+            this.ethicalProcessoService.deletarProcessoEtico(this.processoEtico.ethicalProcessId).subscribe(
+                () => {
+                    Swal.fire('Deletado!', 'O processo foi removido com sucesso.', 'success').then(() => {
+                        // Evite usar o reload completo da página
+                        this.processoDeletado.emit(this.processoEtico.ethicalProcessId); // Emite o id do processo excluído
+                    });
+                },
+                error => {
+                    console.error('Erro ao deletar o processo', error);
+                    Swal.fire('Erro!', 'Não foi possível deletar o processo.', 'error');
+                }
+            );
         }
-      });
-    }
+    });
+  }
 }

@@ -71,7 +71,7 @@ export class FasesProcessoService {
       axios.put(`${this.apiUrl}/${fase.fasesId}`, fase)
         .then(response => {
           console.log("Dados retornados pelo backend:", response.data);
-          observer.next(response.data);  // Passa os dados completos
+          observer.next(response.data);  
           observer.complete();
         })
         .catch(error => {

@@ -13,8 +13,8 @@ import { CommonModule } from "@angular/common";
 })
 export class FasesProcessoEditPage implements OnInit {
   faseProcesso: any = {}; 
-  ethicalProcessId!: number; // Armazena o ID do processo ético
-  id!: number; // ID da fase atual
+  ethicalProcessId!: number; 
+  id!: number; 
 
   constructor(
     private route: ActivatedRoute,

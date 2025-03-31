@@ -20,7 +20,7 @@ export class CadastroProcessoEticoPage {
     date: '',
     inspiraEm: '',
     processo: {
-      processId: null
+      processId: null as number | null,
     }
   };
   processos: Processo[] = [];
@@ -32,39 +32,61 @@ export class CadastroProcessoEticoPage {
   ) {}
 
   onSubmit() {
+    if (this.processoEtico.processo.processId === null) {
+      Swal.fire("Erro", "Selecione um processo antes de cadastrar!", "error");
+      return;
+    }
+  
     console.log("Processo a ser enviado: ", this.processoEtico);
-
-    this.processoEticoService.getProcessosEticos().subscribe((processosEticos: any[]) => {
-      const existe = processosEticos.some((pe: any) => pe.processo?.processId === this.processoEtico.processo.processId);
-    
-      if (existe) {
-        Swal.fire("Erro", "Já existe um processo ético para esse processo!", "error");
-      } else {
-        this.processoEticoService.cadastrarProcessoEtico(this.processoEtico).subscribe(
-          (data) => {
-            console.log("Resposta do servidor: ", data);
-            Swal.fire({
-              title: "Sucesso!",
-              text: "Processo ético cadastrado com sucesso!",
-              icon: "success",
-              confirmButtonText: "OK"
-            }).then(() => {
-              this.router.navigate(["/processo-etico"]);
-            });
-          },
-          (error) => {
-            console.error("Erro ao cadastrar processo", error);
-            Swal.fire({
-              title: "Erro!",
-              text: "Erro ao cadastrar o processo. Tente novamente.",
-              icon: "error",
-              confirmButtonText: "OK"
-            });
-          }
-        );
+    console.log("ID do processo informado:", this.processoEtico.processo.processId);
+  
+    this.processoEticoService.existsByProcessId(this.processoEtico.processo.processId).subscribe(
+      (exists) => {
+        if (exists) {
+          Swal.fire("Erro", "Já existe um processo ético para esse processo!", "error");
+        } else {
+          this.cadastrarProcessoEtico();
+        }
+      },
+      (error) => {
+        console.error("Erro ao verificar existência do processo ético: ", error);
+        Swal.fire({
+          title: "Erro!",
+          text: "Erro ao verificar se o processo já existe. Tente novamente.",
+          icon: "error",
+          confirmButtonText: "OK"
+        });
       }
-    });    
-  }    
+    );
+  }
+  
+  cadastrarProcessoEtico() {
+    this.processoEticoService.cadastrarProcessoEtico(this.processoEtico).subscribe(
+      (data) => {
+        Swal.fire({
+          title: "Sucesso!",
+          text: "Processo ético cadastrado com sucesso!",
+          icon: "success",
+          confirmButtonText: "OK"
+        }).then(() => {
+          this.router.navigate(["/processo-etico"]);
+        });
+      },
+      (error) => {
+        console.error("Erro ao cadastrar processo: ", error);
+        Swal.fire({
+          title: "Erro!",
+          text: error.error || "Erro desconhecido",
+          icon: "error",
+          confirmButtonText: "OK"
+        });
+      }
+    );
+  }
+  
+  
+  
+  
 
   ngOnInit() {
     this.processoService.getProcessos().subscribe(

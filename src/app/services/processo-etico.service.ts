@@ -66,6 +66,33 @@ export class ProcessoEticoService{
           });
       });
     }
+    findByProcessId(processId: number): Observable<any> {
+      return new Observable(observer => {
+        axios.get(`${this.apiUrl}/buscar?processId=${processId}`)
+          .then(response => {
+            observer.next(response.data);
+            observer.complete();
+          })
+          .catch(error => {
+            console.error("Erro ao buscar processo ético pelo processId", error);
+            observer.error(error);
+          });
+      });
+    }
+    existsByProcessId(processId: number): Observable<boolean> {
+      return new Observable(observer => {
+        axios.get<boolean>(`${this.apiUrl}/exists/${processId}`)
+          .then(response => {
+            observer.next(response.data);
+            observer.complete();
+          })
+          .catch(error => {
+            console.error("Erro ao verificar existência do processo ético", error);
+            observer.error(error);
+          });
+      });
+    }    
+    
     atualizarProcessoEtico(processoEtico: any): Observable<any> {
       return new Observable(observer => {
         axios.put(`${this.apiUrl}/${processoEtico.ethicalProcessId}`, 
